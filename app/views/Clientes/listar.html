@@ -1,0 +1,83 @@
+#{extends 'main.html' /}
+#{set title: 'Home' /}
+<meta charset="utf-8">
+
+<div class="col-md-12">
+ <div class="content">
+ 
+        <div class="container-fluid">
+          <div class="row">
+            
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Listar os Clientes</h4>
+                 
+                  
+                </div>
+                <div class="card-body">
+                <form action ="@{Clientes.listar}">
+                  	 <input name= "busca" type="text" value="" class="col-md-8" placeholder="Pesquisar...">
+ 					 <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                	 		 <i class="material-icons">search</i>
+                 	 		<div class="ripple-container"></div> 
+               		 </button> 
+ 				  </form> <hr>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Nome
+                        </th>
+                        <th>
+                          Email
+                        </th>
+                        <th>
+                          foto
+                        </th>
+                         <th>
+                          Edição
+                        </th>
+                      </thead>
+                 
+		
+	
+	#{list items: lista, as: 'cli'}
+	<tbody>
+	 <tr> <td>${cli.nome}</td> 
+	  <td> ${cli.email}</td>
+	<td><div> 
+	<img class="img" height="100px" width="100px" src="@{mostrarImagemPerfil(cli?.id)}">
+	</div></td>
+	<td>
+ 	<a href='@{Clientes.editar(cli.id)}'
+ 	rel="tooltip" title="Editar Cliente" class="btn btn-primary btn-link btn-sm">
+ 	 <i class="material-icons">edit</i></a>
+ 	<a href='@{Clientes.deletar(cli.id)}' 
+ 	rel="tooltip" title="Remove Cliente" class="btn btn-danger btn-link btn-sm">
+ 	 <i class="material-icons">close</i></a>
+ 	 </td>
+ 	
+#{/list}
+
+	#{else}
+	 Nenhum Cliente cadastrado
+#{/else}
+
+</ul> 
+ 
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+				
+         
+
+
+
+
+

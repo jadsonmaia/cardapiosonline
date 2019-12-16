@@ -1,0 +1,34 @@
+#{extends 'MainAdmin.html' /} 
+#{set title: 'Atualizaçoes de Cardapios' /}
+
+<div class="col-md-12">
+	<meta charset="utf-8">
+	<div class="card">
+		<div class="card-header card-header-primary">
+			<h4 class="card-title">Cadastro de Cardápios</h4>
+			<p class="card-category"></p>
+		</div>
+		<div class="card-body">
+			<form method="post" action="@{PainelAdminRestaurante.atualizarCadastroCardapio()}"
+				enctype="multipart/form-data">
+
+				<input type="hidden" name="restaurante.id" value="${restaurante?.id}">
+		
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Cardápios</label>
+							<div class="form-group bmd-form-group">
+								<textarea name="restaurante.cardapios" class="form-control" rows="5">${restaurante?.cardapios}</textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary pull-right">Atualizar
+					Cardápio</button>
+				<div class="clearfix"></div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,147 @@
+#{extends 'main.html' /}
+#{set title: 'Formulario' /}
+
+#{if flash.success}
+						<div class="verde">${flash.success}</div>
+						#{/if} #{if flash.error}
+						<div class="vermelho">${flash.error}</div>
+						#{/if}
+
+
+<div class="col-md-12">
+<meta charset="utf-8">
+<div class="card">
+	<div class="card-header card-header-primary">
+	<h4 class="card-title">Cadastrar Usuario</h4>
+	<p class="card-category">Informe os Dados:</p>
+	</div>
+	<div class="card-body">
+	<form action="@{Clientes.salvar()}" method="POST" enctype="multipart/form-data">
+	
+
+							<input type="hidden" name="cli.id" value="${cli?.id}">
+									<div class="card card-profile">
+										<br>
+										#{if cli?.foto != null}
+											
+											<div> <img class="img" height="200px" width="300px" 
+											src="@{mostrarImagemPerfil(cli?.id)}" />
+										</div>
+										
+										#{/if}
+										<div class="card-body">
+											<input type="file" name="cli.foto" value="${cli?.id}" class="btn btn-primary btn-round">
+										</div>
+									</div>
+								
+								<br>
+								
+							<div class="row">
+							<div class="card-body">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Nome </label> <input
+											type="text" name="Cliente.nome" class="form-control" value="${cli?.nome}">
+										
+									</div>
+								</div></div></div>
+								
+								<div class="row">
+								<div class="card-body">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Email </label> <input
+											type="email" name="Cliente.email" class="form-control" value="${cli?.email}">
+										<span class="vermelho">#{error 'Usuario.email'/}</span>
+									</div></div>
+								</div>
+								</div>
+							
+							<div class="row">
+							<div class="card-body">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Endereço</label> <input
+											type="text" name="Cliente.endereco" class="form-control" value="${cli?.endereco}">
+										<span class="vermelho">#{error 'Usuario.endereco'/}</span>
+									</div>
+								</div></div>
+							</div>
+							<div class="row">
+							<div class="card-body">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Bairro</label> <input
+											type="text" name="Cliente.bairro" class="form-control" value="${cli?.bairro}">
+									</div>
+									</div>
+									
+								</div>
+								</div>
+								<!-- #{if cli?.numero != null}
+									 
+             <div class="col-lg-3 col-sm-4">
+              <div class="form-group has-danger">
+                <label for="exampleInput3" class="bmd-label-floating">Error input</label>
+                <input type="text" class="form-control" id="Usuario.numero">
+                <span class="form-control-feedback">
+                  <i class="material-icons">clear</i>
+                </span>
+              </div>
+            </div> #{/if}-->
+								<div class="row">
+								<div class="card-body">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Numero</label> <input
+											type="text" name="Cliente.numero" class="form-control"
+											value="${cli?.numero}">
+										<span class="col-lg-3 col-sm-4">#{error 'Usuario.numero'/}</span>
+						
+									</div>
+									
+									</div>
+									</div>
+								</div>
+							   <div class="row">
+							   <div class="card-body">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Senha</label> <input
+											type="password" name="Cliente.senha" class="form-control">
+									</div>
+									</div>
+								</div>
+								</div>
+								
+									
+								<!--  	Foto do usuario
+									<input type="file" name="foto"><br/> -->
+									
+								<div class="row">
+								<div class="card-body">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Tipo de Usuario</label> <select
+											class="form-control col-12" name="Usuario.tipoUsuario">
+											<option value="">---</option>
+											 #{list items:tipoUsuario,
+											as:'tipoUsuario'}
+											<option #{if tipoUsuario== usuario?.tipoUsuario} select#{/if}>${tipoUsuario}</option>
+											#{/list}
+										</select>
+									</div>
+									</div>
+								</div>
+								</div>
+								<div>
+								
+								<button type="submit" class="btn btn-primary pull-right">Enviar</button></div>
+						</form>
+						</div>
+					</div>
+					</div>
+				
+
+
+

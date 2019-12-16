@@ -1,0 +1,85 @@
+#{extends 'mainUsuario.html' /}
+#{set title:'Inicio' /}
+	<meta charset="utf-8">
+	 <section class="home-slider owl-carousel js-fullheight">
+		#{list items:restaurantes, as: 'restaurante'}
+		<div class="slider-item js-fullheight"
+			style="background-image: url(@{Restaurantes.mostrarImagem(restaurante.id)});">
+			
+			<div class="overlay"></div>
+			
+			<div class="container">
+				
+				<div
+					class="row slider-text js-fullheight justify-content-center align-items-center"
+					data-scrollax-parent="true">
+
+					<div class="col-md-12 col-sm-12 text-center ftco-animate">
+						<h1 class="mb-4 mt-5">${restaurante.nome}</h1>
+						<p>
+							<a href="@{PainelUsuarioPadrao.menu(restaurante.id)}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Ver
+								Mais</a> 
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		 #{/list}
+    </section>
+  
+    <section class="ftco-section">
+    	<div class="container-fluid px-4">
+    		<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Restaurantes</span>
+            <h2 class="mb-4">Os Restaurantes</h2>
+          </div>
+        </div>
+        
+        <div class="row">
+        	<div class="col-md-12 col-lg-12 menu-wrap">
+        	
+        	#{list items:restaurantes, as: 'restaurante'}
+        	<div class="menus d-flex ftco-animate">
+              <div class="menu-img img" 
+              #{if restaurante?.foto?.exists()}
+              style="background-image: url(@{Restaurantes.mostrarImagem(restaurante.id)});"
+              #{/if}
+              #{else}
+               style="background-image: url(/public/images/icon-restaurante.png);"
+              #{/else}
+              ></div>
+              <div class="text">
+              	<div class="d-flex">
+	                <div class="one-half">
+	                 <a href="@{PainelUsuarioPadrao.menu(restaurante.id)}">
+	                <h3>${restaurante.nome}</h3>
+	                 </a>
+	                </div>
+	              
+	              </div>
+	              
+	              <p><span>${restaurante.endereco}</span>, <span>${restaurante.numero}</span></p>
+              		 #{if session.get("ClienteID")}
+              		 
+	              		 #{if restaurante.temCliente(session.get("ClienteID"))}
+	              			JÁ TÁ FAVORITADO
+	              		 
+	              		 #{/if}
+	              		 #{else}
+	              		 <a href='@{Restaurantes.favoritar(restaurante.id, session.get("ClienteID"))}' class="btn btn-danger btn-fab btn-round">
+	                	<i class="material-icons">Favoritar</i>
+	             		 </a>
+	             		 #{/else}
+             		 #{/if}
+              </div>
+            </div>
+           
+            #{/list}
+            </div>
+        	</div>
+            </div>
+            </section>
+            
+            

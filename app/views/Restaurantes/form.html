@@ -1,0 +1,107 @@
+#{extends 'main.html' /} 
+#{set title: 'listar de restaurantes' /}
+
+<div class="col-md-12">
+	<meta charset="utf-8">
+	<div class="card">
+		<div class="card-header card-header-primary">
+			<h4 class="card-title">Cadastro de Restaurante</h4>
+			<p class="card-category"></p>
+		</div>
+		<div class="card-body">
+			<form method="post" action="@{Restaurantes.salvar()}"
+				enctype="multipart/form-data">
+
+				<input type="hidden" name="res.id" value="${res?.id}">
+				<div class="card card-profile">
+					<br>
+
+					#{if res?.foto != null}
+					<div>	
+						<img class="img" height="200px" width="300px" src="@{Restaurantes.mostrarImagem(res?.id)}">
+					</div>
+					#{/if}
+					
+					<div class="card-body">
+						<input type="file" name="res.foto" value="${res?.foto}"
+							class="btn btn-primary btn-round">
+					</div>
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group bmd-form-group">
+							<label class="bmd-label-floating">Nome do proprietário</label> <input
+								name="usuario.nome" value="${res?.administrador?.nome}" type="text"
+								class="form-control">
+								<span class="vermelho">#{error 'Restaurante.nome'/}</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group bmd-form-group">
+							<label class="bmd-label-floating">E-mail do proprietário</label> <input
+								name="usuario.email" value="${res?.administrador?.email}" type="text"
+								class="form-control">
+								<span class="vermelho">#{error 'Restaurante.email'/}</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group bmd-form-group">
+							<label class="bmd-label-floating">Senha de acesso</label> <input
+								name="usuario.senha" value="${res?.administrador?.senha}" type="text"
+								class="form-control">
+								<span class="vermelho">#{error 'Restaurante.senha'/}</span>
+						</div>
+					</div>
+				</div>
+				
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group bmd-form-group">
+							<label class="bmd-label-floating">Nome do restaurante</label> <input
+								name="res.nome" value="${res?.nome}" type="text"
+								class="form-control">
+								<span class="vermelho">#{error 'Restaurante.nomeId'/}</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group bmd-form-group">
+							<label class="bmd-label-floating">Endereço</label> <input
+								name="res.endereco" value="${res?.endereco}" type="text"
+								class="form-control">
+								<span class="vermelho">#{error 'Restaurante.endereco'/}</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Cardápios</label>
+							<div class="form-group bmd-form-group">
+								<textarea name="res.cardapios" class="form-control" rows="5">${res?.cardapios}</textarea>
+								<span class="vermelho">#{error 'Restaurante.cardapios'/}</span>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary pull-right">Cadastrar
+					Restaurante</button>
+				<div class="clearfix"></div>
+			</form>
+		</div>
+	</div>
+</div>

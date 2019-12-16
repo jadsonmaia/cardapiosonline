@@ -1,0 +1,70 @@
+#{extends 'mainUsuario.html' /}
+ #{set title:'Menu' /}
+<meta charset="utf-8" />
+<section class="hero-wrap hero-wrap-2"
+	style="background-image: url(@{ Restaurantes.mostrarImagem ( restaurante.id)});"
+	data-stellar-background-ratio="0.5">
+	<div class="overlay">
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate text-center">
+					<h1 class="mb-2 bread">${restaurante?.nome}</h1>
+					<p class="breadcrumbs">
+						<span class="mr-2"><a href="#">${restaurante.endereco}</a> </span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section">
+	<div class="container-fluid px-4">
+		
+		<div class="row">
+			<div class="col-md-12 col-lg-12 menu-wrap">
+				<div class="heading-menu text-center ftco-animate"></div>
+				<div class="menus d-flex ftco-animate">
+					<div class="menu-img img"
+						style="background-image: url(@{ Restaurantes.mostrarImagem ( restaurante.id)}"></div>
+					<div class="text">
+						<div class="d-flex">
+							<div class="one-half">
+								<center><h3>Cardápio</h3></center>
+							</div>
+							<div class="one-forth"></div>
+						</div>
+						<p>
+							<span>${restaurante.cardapios}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid px-4">
+		
+		<div class="row">
+			<div class="col-md-8 col-lg-8 menu-wrap">
+				<div class="heading-menu text-center ftco-animate"></div>
+				<div class="menus d-flex ftco-animate">
+					<div class="menu-img img"
+						style="background-image: url(@{ Restaurantes.mostrarImagem ( restaurante.id)}"></div>
+					<div class="text">
+						<div class="d-flex">
+							<div class="one-half">
+								<center><h3>Promoção</h3></center>
+							</div>
+							<div class="one-forth"></div>
+						</div>
+						<p>
+							<span>${restaurante.cardapios}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

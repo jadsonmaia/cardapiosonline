@@ -1,0 +1,89 @@
+#{extends 'MainAdmin.html' /}
+#{set title: 'Cadastro de Promocoes' /}
+<div class="col-md-12">
+<meta charset="utf-8">
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<h4 class="card-title">Cadastrar Promoção</h4>
+						<p class="card-category">Informe:</p>
+					</div>
+					<div class="card-body">
+
+						#{if flash.success}
+						<div class="verde">${flash.success}</div>
+						#{/if} #{if flash.error}
+						<div class="vermelho">${flash.error}</div>
+						#{/if}
+
+						<form action="@{Promocoes.salvar()}" method="post" enctype="multipart/form-data">
+
+							<input type="hidden" name="Cliente.id" value="${cli?.id}">
+							
+		  		   
+									<br>
+									<div class="col-md-12" >
+									<div class="card card-profile">
+										<div class="">
+											<a href="#pablo"> <img class="img"
+												src="@{'public/material-dashboard-master/assets/img/faces/imgBra.jpg'}" height="150px" width="150px"/>
+											</a>
+										</div>
+										<div class="card-body">
+											<h6 class="card-category text-gray">Adicione sua foto</h6> 
+											<a href="#pablo" class="btn btn-primary btn-round"> 
+											<input type="file" name="promocao.foto"></a>
+										</div>
+									</div>
+								</div>
+								<br>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">titulo: </label> <input
+											type="text" name="Promocao.titulo" class="form-control"
+											value="${pro?.titulo}">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="label-control">Data Inicio:</label> <input
+											type="text" name="promocao.dataInicio" class="form-control datetimepicker"
+											value="${pro?.dataInicio}">
+											
+									
+									</div>
+								</div>
+								
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="bmd-label-floating">Data termino:</label> <input
+											type="text" name="promocao.dataFim" class="form-control"
+											value="${pro?.dataFim}">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									<label>Descrição:</label>
+									<div class="form-group bmd-form-group">
+								<textarea value="${pro?.descricao}" name="promocao.descricao" class="form-control" rows="5">${pro?.descricao}</textarea>
+									</div>
+									</div>
+								</div>
+								</div>
+								<button type="submit" class="btn btn-primary pull-right">Enviar</button>
+						</form>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+</div>
